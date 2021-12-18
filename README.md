@@ -1,4 +1,4 @@
-# Nuxt Js Starter
+# Nuxt Js / Express Starter
 
 ## What is installed on this starter ?
 
@@ -8,6 +8,10 @@
 - Sitemap generator
 - Eslint + Prettier
 - Sass & Style ressources
+- Express
+- Mongoose
+- Bcrypt
+- Jsonwebtoken
 
 ## How to install ?
 
@@ -34,7 +38,16 @@ For detailed explanation on how things work, check out the [documentation](https
 
 ## Special Directories
 
+### `api`
+
+The api directory contains your backend directory wich is managed with express
+More information about the usage of this directory in [the documentation](https://expressjs.com/fr/starter/installing.html).
+
 ### `content`
 
 The content directory contains your data for the nuxt content cms
 More information about the usage of this directory in [the documentation](https://content.nuxtjs.org/).
+
+### `To do`
+
+Sign up / Login -> In progress
