@@ -1,0 +1,36 @@
+// Import dependencies
+const express = require('express')
+const mongoose = require('mongoose')
+
+// Create express instance
+const app = express()
+
+// Connect to MongoDB
+mongoose
+  .connect('mongodb+srv://ayoub9360:Password@cluster0.nnfez.mongodb.net/marketplace?retryWrites=true&w=majority', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log('Connexion à MongoDB réussie !'))
+  .catch(() => console.log('Connexion à MongoDB échouée !'))
+
+// Require API routes
+// const exempleRoutes = require('./routes/exemple')
+const postRoutes = require('./routes/post')
+
+// Import API Routes
+app.use(express.json())
+// app.use('/exemple', exempleRoutes)
+app.use('/post', postRoutes)
+
+// Export express app
+module.exports = app
+
+// Start standalone server if directly running
+if (require.main === module) {
+  const port = process.env.PORT || 3001
+  app.listen(port, () => {
+    // eslint-disable-next-line no-console
+    console.log(`API server listening on port ${port}`)
+  })
+}
