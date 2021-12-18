@@ -48,6 +48,6 @@ More information about the usage of this directory in [the documentation](https:
 The content directory contains your data for the nuxt content cms
 More information about the usage of this directory in [the documentation](https://content.nuxtjs.org/).
 
-### `To do`
+## To do
 
 Sign up / Login -> In progress
