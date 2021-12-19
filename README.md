@@ -1,22 +1,28 @@
-# Nuxt Js / Express Starter
+# 🏆 Nuxt / Express Starter
 
-## What is installed on this starter ?
+## _What is installed on this starter ?_
 
-- i18n
-- Nuxt content
-- Nuxt auth
-- Axios
-- Sitemap generator
-- Eslint + Prettier
-- Sass & Style ressources
+- @nuxt/content
+- @nuxtjs/auth
+- @nuxtjs/sitemap
+- @nuxtjs/axios
+- @nuxt/i18n
 - Express
 - Mongoose
 - Bcrypt
 - Jsonwebtoken
+- Eslint + Prettier
+- Sass & Style ressources
 
-## How to install ?
+## _Installation_
 
-```bash
+Clone and install the dependencies and devDependencies and start the server.
+
+```sh
+# Clone the repository
+git clone git@github.com:ayoub9360/Nuxt-Express-Starter.git
+cd Nuxt-Express-Starter
+
 # install your own git repository
 $ rm -rf .git
 $ git init
@@ -26,18 +32,16 @@ $ npm install
 
 # serve with hot reload at localhost:3000
 $ npm run dev
-
-# build for production and launch server
-$ npm run build
-$ npm run start
-
-# generate static project
-$ npm run generate
 ```
 
 For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
 
-## Special Directories
+## _Configuration_
+
+- Copy the .env.exemple and edit your .env
+- Edit the nuxt.config with your configuration
+
+## _Special Directories_
 
 ### `api`
 
@@ -48,7 +52,3 @@ More information about the usage of this directory in [the documentation](https:
 
 The content directory contains your data for the nuxt content cms
 More information about the usage of this directory in [the documentation](https://content.nuxtjs.org/).
-
-## To do
-
-Sign up / Login -> In progress
