@@ -1,9 +1,8 @@
 <template>
   <div class="profil">
-    <p>UserId : UserId</p>
-    <p>Username : Username</p>
-    <p>Name : Name</p>
-    <p>Lastname : Lastname</p>
+    <p>UserId : {{ $auth.user._id }}</p>
+    <p>Email : {{ $auth.user.email }}</p>
+    <p @click="$auth.logout()">Logout</p>
   </div>
 </template>
 

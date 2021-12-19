@@ -80,10 +80,45 @@ export default {
 
   buildModules: ['@nuxtjs/eslint-module'],
 
-  modules: ['@nuxtjs/axios', '@nuxt/content', '@nuxtjs/sitemap', '@nuxtjs/i18n', '@nuxtjs/style-resources'],
+  modules: [
+    '@nuxtjs/axios',
+    '@nuxt/content',
+    '@nuxtjs/sitemap',
+    '@nuxtjs/i18n',
+    '@nuxtjs/style-resources',
+    '@nuxtjs/auth',
+  ],
 
   serverMiddleware: {
     '/api': '~/api',
+  },
+
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            url: '/api/auth/login',
+            method: 'post',
+            propertyName: 'token',
+          },
+          user: {
+            url: '/api/auth/user',
+            method: 'get',
+            propertyName: 'user',
+          },
+          logout: true,
+        },
+        tokenRequired: true,
+        tokenType: 'Bearer',
+      },
+    },
+    redirect: {
+      login: '/user/login', // User will be redirected to this path if login is required
+      logout: '/user/login', // User will be redirected to this path if after logout, current route is protected
+      home: '/', // User will be redirect to this path after login if accessed login page directly
+    },
+    rewriteRedirects: true,
   },
 
   // ** For deployment you might want to edit host and port

@@ -3,20 +3,20 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet" />
 
     <h1 class="m:auto">Login page</h1>
-    <form class="w-full max-w-sm" @submit.prevent="addPost">
+    <form class="w-full max-w-sm" @submit.prevent="login">
       <div class="md:flex md:items-center mb-6">
         <div class="md:w-1/3">
           <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-username">
-            Username
+            Email
           </label>
         </div>
         <div class="md:w-2/3">
           <input
-            id="inline-username"
-            v-model="form.title"
+            id="inline-email"
+            v-model="form.email"
             class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
             type="text"
-            placeholder="Username"
+            placeholder="Email"
           />
         </div>
       </div>
@@ -60,8 +60,8 @@ export default {
   data() {
     return {
       form: {
-        username: null,
-        password: null,
+        email: 'ayoub.elguendouz@gmail.com',
+        password: 'password',
       },
       error: null,
     }
@@ -69,6 +69,19 @@ export default {
   methods: {
     login() {
       // TODO: add login
+      this.$auth
+        .loginWith('local', {
+          data: {
+            email: this.form.email,
+            password: this.form.password,
+          },
+        })
+        .then(() => {
+          this.$router.push('/')
+        })
+        .catch((err) => {
+          this.error = err.response.data.message
+        })
     },
   },
 }

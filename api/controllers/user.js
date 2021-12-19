@@ -36,11 +36,25 @@ exports.login = (req, res, next) => {
           //* If the password is correct return the user with the token else return invalid password
           if (!valid) return res.status(401).json({ error: 'Invalid password' })
           res.status(200).json({
-            userId: user._id,
             token: jwt.sign({ userId: user._id }, process.env.TOKEN_SECRET, { expiresIn: '24h' }),
           })
         })
         .catch((error) => res.status(500).json({ error }))
     })
     .catch((error) => res.status(500).json({ error }))
+}
+
+exports.user = (req, res, next) => {
+  const token = req.headers.authorization.split(' ')[1]
+  const decodedToken = jwt.verify(token, process.env.TOKEN_SECRET)
+  const userId = decodedToken.userId
+  User.findOne({ _id: userId }).then((user) => {
+    if (!user) return res.status(401).json({ error: 'User not found' })
+    res.status(200).json({
+      user: {
+        _id: user._id,
+        email: user.email,
+      },
+    })
+  })
 }

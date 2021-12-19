@@ -8,9 +8,13 @@
         <nuxt-link class="text-blue-500 hover:text-blue-800" to="/product/add">Add post</nuxt-link>
       </li>
       <li class="mr-6 user">
-        <nuxt-link class="text-blue-500 hover:text-blue-800" to="/user/login">Login | </nuxt-link>
-        <nuxt-link class="text-blue-500 hover:text-blue-800" to="/user/signup">signup | </nuxt-link>
-        <nuxt-link class="text-blue-500 hover:text-blue-800" to="/user/profil">Profil</nuxt-link>
+        <nuxt-link v-if="!$auth.loggedIn" class="text-blue-500 hover:text-blue-800" to="/user/login"
+          >Login |
+        </nuxt-link>
+        <nuxt-link v-if="!$auth.loggedIn" class="text-blue-500 hover:text-blue-800" to="/user/signup"
+          >signup
+        </nuxt-link>
+        <nuxt-link v-if="$auth.loggedIn" class="text-blue-500 hover:text-blue-800" to="/user/profil">Profil</nuxt-link>
       </li>
     </ul>
   </div>

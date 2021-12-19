@@ -4,6 +4,7 @@
 
 - i18n
 - Nuxt content
+- Nuxt auth
 - Axios
 - Sitemap generator
 - Eslint + Prettier
