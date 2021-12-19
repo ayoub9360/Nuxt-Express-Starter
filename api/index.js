@@ -7,7 +7,7 @@ const app = express()
 
 // Connect to MongoDB
 mongoose
-  .connect('mongodb+srv://ayoub9360:Password@cluster0.nnfez.mongodb.net/marketplace?retryWrites=true&w=majority', {
+  .connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })

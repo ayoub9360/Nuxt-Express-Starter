@@ -61,7 +61,7 @@ export default {
   data() {
     return {
       form: {
-        email: 'ayoub.elguendouz@gmail.com',
+        email: 'exemple@gmail.com',
         password: 'password',
       },
       error: null,

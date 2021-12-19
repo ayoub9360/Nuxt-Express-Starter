@@ -45,16 +45,20 @@ exports.login = (req, res, next) => {
 }
 
 exports.user = (req, res, next) => {
-  const token = req.headers.authorization.split(' ')[1]
-  const decodedToken = jwt.verify(token, process.env.TOKEN_SECRET)
-  const userId = decodedToken.userId
-  User.findOne({ _id: userId }).then((user) => {
-    if (!user) return res.status(401).json({ error: 'User not found' })
-    res.status(200).json({
-      user: {
-        _id: user._id,
-        email: user.email,
-      },
+  try {
+    const token = req.headers.authorization.split(' ')[1]
+    const decodedToken = jwt.verify(token, process.env.TOKEN_SECRET)
+    const userId = decodedToken.userId
+    User.findOne({ _id: userId }).then((user) => {
+      if (!user) return res.status(401).json({ error: 'User not found' })
+      res.status(200).json({
+        user: {
+          _id: user._id,
+          email: user.email,
+        },
+      })
     })
-  })
+  } catch (error) {
+    res.status(401).json({ error: 'Invalid token' })
+  }
 }
