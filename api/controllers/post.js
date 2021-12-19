@@ -11,11 +11,11 @@ exports.deletePost = (req, res, next) => {
         error: 'Post not found!',
       })
     }
-    // if (post.userId !== req.auth.userId) {
-    //   return res.status(401).json({
-    //     error: new Error('Not authorized!'),
-    //   })
-    // }
+    if (post.userId !== req.auth.userId) {
+      return res.status(401).json({
+        error: new Error('Not authorized!'),
+      })
+    }
     Post.deleteOne({ _id: req.params.id })
       .then(() => {
         res.status(200).json({
