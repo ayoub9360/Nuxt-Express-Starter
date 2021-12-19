@@ -2,6 +2,7 @@
   <div class="container">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet" />
 
+    <h1 class="m:auto">Login page</h1>
     <form class="w-full max-w-sm" @submit.prevent="addPost">
       <div class="md:flex md:items-center mb-6">
         <div class="md:w-1/3">
@@ -73,12 +74,17 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 90vh;
   min-width: 100%;
+  h1 {
+    font-size: 28px;
+    margin-bottom: 1rem;
+  }
 }
 </style>

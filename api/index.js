@@ -17,11 +17,12 @@ mongoose
 // Require API routes
 // const exempleRoutes = require('./routes/exemple')
 const postRoutes = require('./routes/post')
+const userRoutes = require('./routes/user')
 
 // Import API Routes
 app.use(express.json())
-// app.use('/exemple', exempleRoutes)
 app.use('/post', postRoutes)
+app.use('/auth', userRoutes)
 
 // Export express app
 module.exports = app

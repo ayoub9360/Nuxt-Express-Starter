@@ -113,8 +113,8 @@ export default {
       this.error = null
 
       // check if all fields are filled
-      if (!this.form.title && !this.form.description && !this.form.imageUrl && !this.form.price)
-        return (this.error = 'Veuillez remplir tous les champs')
+      if (!this.form.title || !this.form.description || !this.form.imageUrl || !this.form.price)
+        return (this.error = 'Please fill all fields')
 
       // Send post request with axios
       this.$axios
@@ -126,14 +126,11 @@ export default {
           userId: '61ba29e4d706f81f8da8589d',
         })
         .then((response) => {
-          console.log(response)
           this.success = 'Post added successfully'
         })
-        .catch((error) => {
-          this.error = error.response.data.error
+        .catch(() => {
+          this.error = 'A problem occured, please try check your information and try again later'
         })
-
-      // TODO: add post
     },
   },
 }
